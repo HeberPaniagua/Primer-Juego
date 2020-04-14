@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ejercicio</title>
+</head>
+<body>
+  
+  <script>
+    // var x = 10;
+
+    // console.log(`1. El valor de x es ${x}`)
+
+    // var resultado = new Promise ( function (resolve, reject) {
+    //     setTimeout (function () {
+    //     x = x + 5
+    //     console.log(`2. El resultado de la operacion es ${x}`)
+    //     resolve(x)
+    //   }, 0);
+    //     reject();
+    // });
+    // resultado.then((res) => console.log('3. Despues de la operacion, el valor de x es' + res))
+    // .catch((error) => console.log("3. No sea a podidor procesar la operacion") )
+
+    let usuario = [{
+      id: 1,
+      nombre: 'Heber'
+    }, {
+      id: 2,
+      nombre: 'julieta'
+    }]
+
+    let telefonos = [{
+      id: 1,
+      telefono: 123456
+    }, {
+      id: 2,
+      telefono: 456789
+    }]
+
+    const obtenerUsuario = function (parametro) {
+      return new Promise ( function (resolve, reject) {
+
+        var par = function (otroParametro) {
+          return otroParametro.id === parametro 
+        }
+
+        if(usuario.find(par)){
+          console.log('El usuario existe')
+          resolve(obtenerTelefono(parametro))
+        } else {
+          reject('El usuario no existe')
+        }
+      })
+    }
+
+    const obtenerTelefono = function (parametro) {
+      return new Promise ( function (resolve, reject) {
+
+          if(telefonos.find( function (otroparametro) { return otroparametro.id === parametro })) {
+            resolve('El telefono existe cobron')
+          } else {
+            reject('El telefono no existe')
+          }
+        })
+    };
+  
+
+   obtenerUsuario(1).then((res) => {
+      return res
+    }).then((mensaje) =>{
+      console.log(mensaje)
+    })
+    // console.log(obtenerTelefono(123456))
+    
+  </script>
+</body>
+</html>
